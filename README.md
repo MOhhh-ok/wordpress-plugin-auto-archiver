@@ -9,7 +9,8 @@ Auto increment patch version, and archive directory.
 First, edit the lines below.
 
 
-```php:auto-archive.php
+```php
+// auto-archive.php
 define("PLUGIN_PATH", __DIR__ . '/plugins/test-plugin');
 define("ARCHIVE_PATH", __DIR__ . '/archives');
 ```
