@@ -1,6 +1,6 @@
 <?php
 
-define("PLUGIN_PATH", __DIR__ . '/plugins/test-plugin');
+define("PLUGIN_PATH", __DIR__ . '/sample/plugins/test-plugin');
 define("ARCHIVE_PATH", __DIR__ . '/archives');
 
 function incrementPatchVersion($file)
