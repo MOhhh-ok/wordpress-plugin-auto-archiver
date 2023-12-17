@@ -7,7 +7,7 @@ function incrementPatchVersion($file)
 {
     $content = file_get_contents($file);
     if (!$content) {
-        throw new Exception("ファイルが読み込めません: {$file}");
+        throw new Exception("Can not read plugin main file: {$file}");
     }
 
     if (preg_match('/^Version:\s*(\d+\.\d+\.)(\d+)/m', $content, $matches)) {

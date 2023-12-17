@@ -10,8 +10,10 @@ First, edit the lines below.
 
 File: /auto-archive.php
 
-> define("PLUGIN_PATH", __DIR__ . '/plugins/test-plugin');
-> define("ARCHIVE_PATH", __DIR__ . '/archives');
+```php
+define("PLUGIN_PATH", __DIR__ . '/plugins/test-plugin');
+define("ARCHIVE_PATH", __DIR__ . '/archives');
+```
 
 # Usage
 
@@ -23,5 +25,6 @@ Before runnning script, backup your plugin.
 
 Run the script like below.
 
+```
 php auto-archive.php
-
+```
