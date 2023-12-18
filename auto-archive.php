@@ -1,5 +1,9 @@
 <?php
 
+if (!empty($_SERVER['HTTP_HOST'])) {
+    return;
+}
+
 define("PLUGIN_PATH", __DIR__ . '/sample/plugins/test-plugin');
 define("ARCHIVE_PATH", __DIR__ . '/archives');
 
