@@ -6,11 +6,12 @@ Auto increment patch version, and archive directory.
 
 This plugin is compatible with the following formats.
 
+```php
 /*
 ...
 Version: 1.0.0
 */
-
+```
 
 
 # Settings
