@@ -26,6 +26,8 @@ function incrementPatchVersion($file)
 
 function zipPlugin($srcDir, $zipFile)
 {
+    $pluginName= basename($srcDir);
+
     $zip = new ZipArchive();
     if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== TRUE) {
         throw new Exception("Can not open the zip file: {$zipFile}");
@@ -40,7 +42,7 @@ function zipPlugin($srcDir, $zipFile)
         if (!$file->isDir()) {
             $filePath = $file->getRealPath();
             $relativePath = substr($filePath, strlen($srcDir) + 1);
-            $zip->addFile($filePath, $relativePath);
+            $zip->addFile($filePath, "$pluginName/$relativePath");
         }
     }
 
