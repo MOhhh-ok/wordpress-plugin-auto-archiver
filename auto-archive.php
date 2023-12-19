@@ -7,6 +7,7 @@ if (!empty($_SERVER['HTTP_HOST'])) {
 define("PLUGIN_PATH", __DIR__ . '/sample/plugins/test-plugin');
 define("ARCHIVE_PATH", __DIR__ . '/archives');
 
+
 function incrementPatchVersion($file)
 {
     $content = file_get_contents($file);
@@ -26,7 +27,8 @@ function incrementPatchVersion($file)
 
 function zipPlugin($srcDir, $zipFile)
 {
-    $pluginName= basename($srcDir);
+    $srcDir=realpath($srcDir);
+    $pluginName = basename($srcDir);
 
     $zip = new ZipArchive();
     if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== TRUE) {
@@ -41,7 +43,8 @@ function zipPlugin($srcDir, $zipFile)
     foreach ($files as $name => $file) {
         if (!$file->isDir()) {
             $filePath = $file->getRealPath();
-            $relativePath = substr($filePath, strlen($srcDir) + 1);
+            $relativePath = str_replace($srcDir, '', $filePath);
+            $relativePath = ltrim($relativePath, '/');
             $zip->addFile($filePath, "$pluginName/$relativePath");
         }
     }
@@ -56,7 +59,8 @@ function getMainFilePath($pluginFolder)
     return "{$pluginDir}/{$pluginName}/{$pluginName}.php";
 }
 
-function generateZipPath($pluginFolder, $version) {
+function generateZipPath($pluginFolder, $version)
+{
     $pluginName = basename($pluginFolder);
     return ARCHIVE_PATH . '/' . $pluginName . '-' . $version . '.zip';
 }
